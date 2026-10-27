@@ -25,7 +25,7 @@ Key metrics visible on the Dashboard:
 - NOGOOD messages generated
 
 ---
-
+                
 ## Part 2 — Load and Run (3 min)
 
 1. Click **📦 Load Demo Scenario**

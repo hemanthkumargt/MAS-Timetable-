@@ -127,21 +127,21 @@ def _make_teachers() -> List[TeacherSpec]:
     return [
         TeacherSpec(
             teacher_id     = "T1",
-            name           = "Prof. Aarthi",
+            name           = "Teacher Alpha",
             available_slots = t1_avail,
             preferred_slots = t1_pref,
             priority       = 3,
         ),
         TeacherSpec(
             teacher_id     = "T2",
-            name           = "Dr. Baskar",
+            name           = "Teacher Bravo",
             available_slots = t2_avail,
             preferred_slots = t2_pref,
             priority       = 2,
         ),
         TeacherSpec(
             teacher_id     = "T3",
-            name           = "Dr. Bagyammal",
+            name           = "Teacher Charlie",
             available_slots = t3_avail,
             preferred_slots = t3_pref,
             priority       = 1,
@@ -158,19 +158,19 @@ def _make_students() -> List[StudentSpec]:
         # S7 is enrolled in both CSE401 and CSE330 — the canonical conflict group
         StudentSpec(
             student_id       = "S7",
-            name             = "Group-7 (3rd Year Core)",
+            name             = "Cohort Alpha (Year 3)",
             enrolled_courses = ["CSE401", "CSE330"],
         ),
         # S2 is enrolled in CSE202 and the lab MAT101L
         StudentSpec(
             student_id       = "S2",
-            name             = "Group-2 (2nd Year)",
+            name             = "Cohort Beta (Year 2)",
             enrolled_courses = ["CSE202", "MAT101L"],
         ),
         # S5 is enrolled in CSE330 and CSE501
         StudentSpec(
             student_id       = "S5",
-            name             = "Group-5 (Final Year)",
+            name             = "Cohort Gamma (Final Year)",
             enrolled_courses = ["CSE330", "CSE501"],
         ),
     ]
@@ -310,17 +310,17 @@ def build_department_scale_scenario() -> dict:
     ]
 
     teachers = [
-        TeacherSpec(teacher_id="T1", name="Prof. Aarthi",   available_slots=_all_slots_except(t1_unavail), preferred_slots=t1_pref, priority=4),
-        TeacherSpec(teacher_id="T2", name="Dr. Baskar",   available_slots=_all_slots_except(t2_unavail), preferred_slots=t2_pref, priority=3),
-        TeacherSpec(teacher_id="T3", name="Dr. Bagyammal", available_slots=t3_avail, preferred_slots=t3_pref, priority=2),
-        TeacherSpec(teacher_id="T4", name="Dr. Sen",    available_slots=t4_avail, preferred_slots=t4_pref, priority=1),
+        TeacherSpec(teacher_id="T1", name="Teacher Alpha",   available_slots=_all_slots_except(t1_unavail), preferred_slots=t1_pref, priority=4),
+        TeacherSpec(teacher_id="T2", name="Teacher Bravo",   available_slots=_all_slots_except(t2_unavail), preferred_slots=t2_pref, priority=3),
+        TeacherSpec(teacher_id="T3", name="Teacher Charlie", available_slots=t3_avail, preferred_slots=t3_pref, priority=2),
+        TeacherSpec(teacher_id="T4", name="Teacher Delta",    available_slots=t4_avail, preferred_slots=t4_pref, priority=1),
     ]
 
     students = [
-        StudentSpec(student_id="S7", name="Group-7 (4th Year Core)", enrolled_courses=["CSE401", "CSE330", "CSE410L"]),
-        StudentSpec(student_id="S5", name="Group-5 (3rd Year)",      enrolled_courses=["CSE330", "CSE501", "CSE340"]),
-        StudentSpec(student_id="S2", name="Group-2 (2nd Year)",      enrolled_courses=["CSE202", "MAT101L"]),
-        StudentSpec(student_id="S1", name="Group-1 (1st Year)",      enrolled_courses=["CSE101"]),
+        StudentSpec(student_id="S7", name="Cohort Alpha (Year 4)", enrolled_courses=["CSE401", "CSE330", "CSE410L"]),
+        StudentSpec(student_id="S5", name="Cohort Gamma (Year 3)",      enrolled_courses=["CSE330", "CSE501", "CSE340"]),
+        StudentSpec(student_id="S2", name="Cohort Beta (Year 2)",      enrolled_courses=["CSE202", "MAT101L"]),
+        StudentSpec(student_id="S1", name="Cohort Delta (Year 1)",      enrolled_courses=["CSE101"]),
     ]
 
     sessions = [
@@ -358,11 +358,11 @@ def get_autofill_five_teachers_dept() -> dict:
     """
     return {
         "teachers": [
-            {"id": "T1", "name": "Prof. Aarthi", "priority": 5, "pref_day": "MONDAY", "pref_period": "P2"},
-            {"id": "T2", "name": "Dr. Baskar",   "priority": 4, "pref_day": "TUESDAY", "pref_period": "P2"},
-            {"id": "T3", "name": "Dr. Bagyammal",  "priority": 3, "pref_day": "WEDNESDAY", "pref_period": "P2"},
-            {"id": "T4", "name": "Dr. Sen",     "priority": 2, "pref_day": "THURSDAY", "pref_period": "P2"},
-            {"id": "T5", "name": "Prof. Iyer",  "priority": 1, "pref_day": "FRIDAY", "pref_period": "P2"},
+            {"id": "T1", "name": "Teacher Alpha", "priority": 5, "pref_day": "MONDAY", "pref_period": "P2"},
+            {"id": "T2", "name": "Teacher Bravo",   "priority": 4, "pref_day": "TUESDAY", "pref_period": "P2"},
+            {"id": "T3", "name": "Teacher Charlie",  "priority": 3, "pref_day": "WEDNESDAY", "pref_period": "P2"},
+            {"id": "T4", "name": "Teacher Delta",     "priority": 2, "pref_day": "THURSDAY", "pref_period": "P2"},
+            {"id": "T5", "name": "Teacher Echo",  "priority": 1, "pref_day": "FRIDAY", "pref_period": "P2"},
         ],
         "rooms": [
             {"id": "R101", "capacity": 60, "type": "LECTURE", "building": "Block-A"},
@@ -372,10 +372,10 @@ def get_autofill_five_teachers_dept() -> dict:
             {"id": "LAB2", "capacity": 30, "type": "LAB",     "building": "Block-C"},
         ],
         "students": [
-            {"id": "S1", "name": "Cohort 4A (Final Year)",   "courses": "CSE401, CSE330, CSE410L"},
-            {"id": "S2", "name": "Cohort 3B (Third Year)",   "courses": "CSE330, CSE501, CSE340"},
-            {"id": "S3", "name": "Cohort 2C (Second Year)",  "courses": "CSE202, MAT101L"},
-            {"id": "S4", "name": "Cohort 1D (First Year)",   "courses": "CSE101"},
+            {"id": "S1", "name": "Cohort Alpha (Final Year)",   "courses": "CSE401, CSE330, CSE410L"},
+            {"id": "S2", "name": "Cohort Beta (Year 3)",   "courses": "CSE330, CSE501, CSE340"},
+            {"id": "S3", "name": "Cohort Gamma (Year 2)",  "courses": "CSE202, MAT101L"},
+            {"id": "S4", "name": "Cohort Delta (Year 1)",   "courses": "CSE101"},
         ],
         "sessions": [
             {"code": "CSE401",  "name": "Advanced Algorithms",   "teacher_id": "T1", "enrollment": 55, "type": "LECTURE"},
